@@ -334,8 +334,8 @@
          на v17.vc/apply, без этого переход открылся бы внутри рамки. -->
     <a class="back-link" href="https://v17.vc/" target="_top">&larr; Back to v17.vc</a>
     <h1>Apply</h1>
-    <p class="lede">Capital and marketing for a product that can outpace its own growth</p>
-    <p class="lede-sub">Equity, marketing-for-equity and cohort financing for B2C and B2B teams at Seed - Series A+. The application takes 5-7 minutes — we take it from there</p>
+    <p class="lede">Marketing and growth support for a product that can outpace its own growth</p>
+    <p class="lede-sub">Marketing, growth support and, where it fits, cohort financing for B2C and B2B teams at Seed – Series A+. The application takes 5–7 minutes — we take it from there</p>
 
     <div class="thesis-line">
       <span class="thesis-tag">Segments</span>
@@ -379,7 +379,7 @@
       <!-- ШАГ 1: Quick Fit Check -->
       <div class="step visible" data-step="0">
         <h2>Quick fit check</h2>
-        <p class="step-sub">Four quick questions — we check the basics and show whether financing is a fit, or whether marketing / analytics is the better next step</p>
+        <p class="step-sub">Four quick questions to help us understand your product and which kind of support could fit — marketing, analytics or financing</p>
 
         <!-- Поля шага 1 — строго по ТЗ «Заявка для заполнения командами»,
              НЕ по Notion-форме: без B2G/Other в сегментах, без Pre-Seed,
@@ -449,18 +449,18 @@
         </div>
 
         <div class="field">
-          <label>Which instrument interests you</label>
+          <label>What are you interested in</label>
           <div class="pillgroup" data-name="interested_in" data-multi="true" data-required="true">
-            <div class="pill" data-value="investment">Equity investment</div>
+            <div class="pill" data-value="investment">Equity partnership</div>
             <div class="pill" data-value="cohort">Cohort financing</div>
             <div class="pill" data-value="media">Marketing for equity</div>
           </div>
-          <p class="hint">Cohort financing is for teams already spending $200k+/month on marketing</p>
+          <p class="hint">Cohort financing typically suits teams with significant, steady paid acquisition — each case is assessed individually</p>
         </div>
 
         <div class="row2" id="raiseWrap" style="display:none">
           <div class="field">
-            <label>Amount raising, $</label>
+            <label>Planned round size, $</label>
             <input type="text" inputmode="numeric" id="amount_raising" class="money" placeholder="500,000" required>
           </div>
           <div class="field">
@@ -925,7 +925,7 @@ function evaluateGate(){
 
   if(hardFail || softFail){
     /* Ниже ориентира: не отказ. Предлагаем маркетинг / аналитику, анкету можно продолжить. */
-    slot.innerHTML = '<div class="decline-box"><b>Not yet</b> for financing at this stage. We can look at marketing or analytics support — continue the form and we\'ll follow up</div>';
+    slot.innerHTML = '<div class="decline-box">At this stage, marketing or analytics support may be the better fit. Continue the form and we\'ll follow up</div>';
   } else {
     slot.innerHTML = '';
   }
@@ -964,11 +964,11 @@ function updateGauge(){
   if(mrr === 0 && ltvcac === 0 && ret30 === 0){
     verdictEl.textContent = 'Fill in the form — the score updates as you go';
   } else if(hardFail || softFail){
-    verdictEl.textContent = 'Not yet — financing is early; marketing or analytics may fit better';
+    verdictEl.textContent = 'Marketing or analytics support may be the better fit for now';
   } else if(capitalScore >= 70 && mediaScore >= 50){
-    verdictEl.textContent = 'Fit — strong match on the basics';
+    verdictEl.textContent = 'Looks like a good match on the basics';
   } else {
-    verdictEl.textContent = 'Fit — we will review it alongside other applications';
+    verdictEl.textContent = 'We will review it alongside other applications';
   }
 }
 
@@ -1078,7 +1078,7 @@ async function submitForm(){
     } else {
       console.log('SUBMIT_URL not configured — payload:', payload);
     }
-    document.querySelector('.card').innerHTML = '<div class="success-box"><div class="mark">&#10003;</div><h2>Request submitted</h2><p class="step-sub">We will look at it and get back to you. If there is a fit — financing, marketing or analytics — we will reach out within a few weeks</p></div>';
+    document.querySelector('.card').innerHTML = '<div class="success-box"><div class="mark">&#10003;</div><h2>Request submitted</h2><p class="step-sub">We will review it and get back to you. If there is a fit — marketing, analytics or financing — we will reach out within a few weeks. Any cooperation is subject to mutually agreed commercial terms</p></div>';
     v17ScrollToCard();
   } catch(err){
     document.getElementById('submitResult').innerHTML = '<div class="decline-box">Something went wrong — please try again or email <a href="mailto:' + CONTACT_FALLBACK_EMAIL + '">' + CONTACT_FALLBACK_EMAIL + '</a></div>';
